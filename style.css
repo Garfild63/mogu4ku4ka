@@ -1,0 +1,397 @@
+﻿body {
+    margin: 0 auto;
+    font-family: sansa;
+}
+
+header {
+    background-color: #F1F4F9;
+    margin: 0 0 67px;
+    width: 100%;
+    height: 147px;
+}
+
+footer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background-color: #F1F4F9;
+    width: 100%;
+}
+
+@font-face {
+    font-family: "Scada";
+    src: url("Scada-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "sansa";
+    src: url("sansa.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+h1 {
+    text-align: left;
+    margin-left: 12.6%;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 53px;
+    line-height: 59px;
+    color: rgba(0, 0, 0, 0.71);
+    margin-bottom:67px;
+}
+
+h2 {
+    text-align: left;
+    padding-left: 5%;
+    margin-left: 12.6%;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 53px;
+    line-height: 59px;
+    color: rgba(0, 0, 0, 0.71);
+    margin-bottom: 67px;
+}
+
+h3 {
+    text-align: left;
+    padding-left: 6%;
+    margin-left: 12.6%;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+    color: rgba(0, 0, 0, 0.71);
+    margin-bottom: 67px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+form {
+    margin: auto 7% 90px;
+    background-color: #F1F4F9;
+    width: 80%;
+    display: block;
+    border-radius: 60px;
+    padding-top: 45px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 28px;
+}
+
+form * {
+    margin: 0 0 30px 0;
+}
+
+.formdiv {
+    margin: auto;
+    width: 77%;
+}
+
+hr {
+    opacity: 0.1;
+    border: 1px solid #1A4F9E;
+}
+
+select {
+    width: 80%;
+    height: 35px;
+    font-family: sansa;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 28px;
+}
+
+option {
+    font-family: sansa;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 28px;
+}
+
+input {
+    width: 100%;
+    height: 31px;
+    font-family: sansa;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 28px;
+}
+
+#check {
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+#divcheck div {
+    width: 90%;
+    margin-left: 50px;
+}
+
+#radiobox input {
+    width: 15px;
+    height: 15px;
+}
+
+
+#radiobox input ~ input {
+	margin-left: 40px;
+}
+
+#br {
+    display: none;
+} 
+
+#mail {
+	width: 49%;
+}
+
+#file {
+    font-family: sansa;
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    wrap: soft;
+    resize: vertical;
+    font-family: sansa;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 28px;
+}
+
+#submit, #goto {
+    width: auto;
+    height: auto;
+    margin-top: 37px;
+    margin-bottom: 73px;
+    padding: 14px 35px;
+    background-color: #DC1616;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-family: sansa;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 40px;
+    text-align: center;
+    transition: 1000ms;
+}
+
+#goto {
+	margin-left: 35%;
+}
+
+#cabinet_login {
+	width: auto;
+	height: auto;
+	margin-top: 37px;
+	margin-left: 8%;
+	padding: 14px 35px;
+	background-color: #B4B3B3;
+	border-radius: 12px;
+	border: none;
+	color: white;
+	font-family: sansa;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 36px;
+	line-height: 40px;
+	text-align: center;
+	transition: 1000ms;
+}
+
+#cabinet_login:hover {
+	background-color: #817066;
+	transition: 1000ms;
+}
+
+#cabinet_register {
+    width: auto;
+    height: auto;
+    margin-top: 37px;
+    margin-bottom: 73px;
+    margin-left: 8%;
+    padding: 14px 35px;
+    background-color: #DC1616;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-family: sansa;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 40px;
+    text-align: center;
+    transition: 1000ms;
+}
+
+#cabinet_register:hover {
+	background-color: #ff6161;
+	transition: 1000ms;
+}
+
+#submit:hover {
+	background-color: #ff6161;
+	transition: 1000ms;
+}
+
+footer div {
+    height: 229px;
+}
+
+.footer-logo {
+    background-color: #DADADA;
+    width: 28%;
+}
+
+.footer-logo img {
+    position: absolute;
+    top: 55px;
+    left: 55px;
+}
+
+.footer-nav {
+    background-color: #B4B3B3;
+    width: 28%;
+}
+
+.footer-nav ul {
+	margin-top: 32px;
+}
+
+.footer-nav ul li {
+	margin-top: 12px;
+	list-style-type: none;
+}
+
+.footer-conect {
+	background-color: #DADADA;
+	padding-left: 36px;
+	width: 44%;
+}
+
+.footer-conect div {
+    font-size: 13px;
+    line-height: 15px;
+}
+
+.header-logo {
+	position: relative;
+	height: 91px;
+	width: 478px;
+	margin-left: 7%;
+	top: 24px;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 25px;
+	float: left;
+}
+
+.index-logo {
+    float: right;
+}
+
+.header-logo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.header-logo div {
+	position: absolute;
+	top: 26px;
+	left: 89px;
+}
+
+.header-login {
+    position: relative;
+    margin-left: 84.5%;
+    height: 44px;
+    top: 51px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 22px;
+    text-align: center;
+}
+
+.header-login a div {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.obr_foto {
+    position: relative;
+    bottom: 225pt;
+    width: 20%;
+    padding-right: 4.5%;
+    float: right;
+}
+
+#img1 {
+    position: absolute;
+    top: 14px;
+    left: 75px;
+}
+
+#img2 {
+    position: absolute;
+    top: 4px;
+    left: 95px;
+}
+
+@media screen and (max-width: 800px) {
+	header {
+		margin-bottom: 34px;
+	}
+	
+    h1 {
+        font-size: 25px;
+        line-height: 28px;
+        margin-bottom: 34px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+	.footer-logo {
+		width: 100%;
+	}
+
+	.footer-nav {
+		width: 100%;
+	}
+
+	.footer-conect {
+		width:100%;
+	}
+
+	#br {
+		display: block;
+	}
+
+    #radiobox input ~ input {
+        margin-left: 0px;
+    }
+}
