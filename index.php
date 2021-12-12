@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	session_start();
 	if (isset($_POST['submit'])) {
 		echo '<meta http-equiv="refresh" content="0;URL=' . $_POST['theme'] . '?last_name=' . $_POST['last_name'] . '&first_name=' . $_POST['first_name'] . '&patronim=' . $_POST['patronim'] . '&email=' . $_POST['email'] . '&tel=' . $_POST['tel'] . '"/>';
@@ -66,7 +66,7 @@
         <div class="formdiv">
             <label>
                 Телефон<br><br>
-                <input type="tel" name="tel" value="7(916)123-45-67" pattern="7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}"><br>
+                <input type="tel" name="tel" pattern="8[0-9]{10}"><br>
             </label>
         </div>
         <hr />

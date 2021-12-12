@@ -1,5 +1,34 @@
-﻿<?php
+<?php
     session_start();
+	function typeOfText($link, $email, $text) {
+		if (strpos($text, 'некачеств') and strpos($text, 'медицинск') and strpos($text, 'помощь')) {
+			$type = 0;
+		} else if ((strpos($text, 'платн') or strpos($text, 'ненадлежащ') or strpos($text, 'некачеств') or strpos($text, 'нарушен')) and (strpos($text, 'услуг') or strpos($text, 'медосмотр')) and strpos($text, 'медицинск')) {
+			$type = 1;
+		} else if ((strpos($text, 'некачеств') or strpos($text, 'ненадлежащ')) and strpos($text, 'медицинск') and strpos($text, 'помощь') and (strpos($text, 'вред') or strpos($text, 'ущерб')) and strpos($text, 'здоровь')) {
+			$type = 2;
+		} else if (strpos($text, 'отказ') and (strpos($text, 'медицинск') and strpos($text, 'организацо') or strpos($text, 'больниц'))) {
+			$type = 3;
+		} else if (strpos($text, 'отказ') and (strpos($text, 'медицинск') and strpos($text, 'организацо') or strpos($text, 'больниц') or strpos($text, 'поликлиник') and (strpos($text, 'приклеп') or strpos($text, 'регистр')))) {
+			$type = 4;
+		} else if (strpos($text, 'направлен') and (strpos($text, 'специализированн') or strpos($text, 'высокотехн') or strpos($text, 'профессиональн')) and strpos($text, 'медицинск') and strpos($text, 'помощь')) {
+			$type = 5;
+		} else if ((strpos($text, 'объем') or strpos($text, 'срок') or strpos($text, 'качеств') or strpos($text, 'услов')) and strpos($text, 'страхован')) {
+			$type = 6;
+		} else if (strpos($text, 'недоста') and strpos($text, 'персонал')) {
+			$type = 7;
+		} else if ((strpos($text, 'сложн') or strpos($text, 'трудн')) and strpos($text, 'прием') and strpos($text, 'врач')) {
+			$type = 8;
+		} else if ((strpos($text, 'выдач') or strpos($text, 'продлен') or strpos($text, 'оформлен')) and strpos($text, 'лист') and strpos($text, 'нетрудоспособ')) {
+			$type = 9;
+		} else {
+			$type = -1;
+		}
+		$result = mysqli_query($link, "SELECT Type_ FROM Types WHERE ID = '$type'");
+		$myrow = mysqli_fetch_array($result);
+		mail($email, 'Ответ на Ваше обращение', $myrow['Type_']);
+		return $type;
+	}
 	if (isset($_POST['submit'])) {
         $theme = $_POST['theme'];
 		$radio1 = $_POST['radio1'];
@@ -21,8 +50,8 @@
 		} else {
 			// echo 'No File Uploaded'; // Оповещаем пользователя о том, что файл не был загружен
 		}
-		$link = mysqli_connect('localhost', 'id17910106_egor', '__Sabina83__', 'id17910106_garf');
-        $result = mysqli_query($link, 'INSERT INTO Requests (DateReg) VALUES (NOW())');
+		$link = mysqli_connect('localhost', 'id18108619_user', '__Sabina83__', 'id18108619_mydb');
+		$result = mysqli_query($link, 'INSERT INTO Requests (DateReg, TypeReq) VALUES (NOW(), "' . typeOfText($link, $email, $text) . '")');
         $result = mysqli_query($link, 'INSERT INTO RequestsYur (NumberReg, TypeReq, Category, Name, OGRN, INN, TypeResp, Email, Phone, Region, PostIndex, TextReq, FileReq) VALUES ("' . mysqli_insert_id($link) . '", "' . $theme . '", "' . $radio1 . '", "' . $name . '", "' . $ogrn . '", "' . $inn . '", "' . $radio2 . '", "' . $email . '", "' . $tel . '", "' . $region . '", "' . $mail . '", "' . $text . '", "' . $filename . '")');
     }
 ?>
@@ -118,14 +147,14 @@
         <div class="formdiv">
             <label>
                 Адрес электронной почты (E-mail)<br><br>
-                <input type="email" name="email" value="<?php echo $_GET['email']; ?>"><br>
+                <input type="email" name="email" value="<?php if (isset($_GET['email'])) echo $_GET['email']; ?>"><br>
             </label>
         </div>
         <hr>
         <div class="formdiv">
             <label>
                 Телефон<br><br>
-                <input type="tel" name="tel" value="<?php echo $_GET['tel']; ?>" pattern="7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}"><br>
+                <input type="tel" name="tel" value="<?php if (isset($_GET['tel'])) echo $_GET['tel']; ?>" pattern="8[0-9]{10}"><br>
             </label>
         </div>
 

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	session_start();
 	if (isset($_POST['submit'])) {
 		if (isset($_POST['login'])) {
@@ -22,7 +22,7 @@
 		$password = htmlspecialchars($password);
 		$login = trim($login);
 		$password = trim($password);
-		$link = mysqli_connect('localhost', 'id17910106_egor', '__Sabina83__', 'id17910106_garf');
+		$link = mysqli_connect('localhost', 'id18108619_user', '__Sabina83__', 'id18108619_mydb');
 		$result = mysqli_query($link, "SELECT * FROM Users WHERE Login = '$login'");
 		$myrow = mysqli_fetch_array($result);
 		if (empty($myrow['Password'])) {
