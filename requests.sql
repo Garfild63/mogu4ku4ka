@@ -117,6 +117,8 @@ CREATE TABLE Users
   NumberPass VARCHAR(6) NOT NULL,
   UNIQUE (Login)
 );
+INSERT INTO Users VALUES (0, 'admin', 'sabina83', 'Иванов Иван Иванович', 0000, 000000);
+INSERT INTO Users VALUES (1, 'Garfild63', 'sabina83', 'Колесников Антон Александрович', 1234, 123456);
 
 CREATE TABLE TypesReq
 (
@@ -376,57 +378,50 @@ CREATE TABLE Requests
 (
   NumberReg INT PRIMARY KEY AUTO_INCREMENT, -- Номер регистрации обращения в системе документооборота*
   DateReg DATE NOT NULL, -- дата регистрации обращения в системе документооборота*
-  TypeReq INT NOT NULL,
-  FOREIGN KEY (TypeReq) REFERENCES Types(ID)
+  Type_ INT NOT NULL,
+  Employee INT NOT NULL,
+  Decided BOOLEAN NOT NULL,
+  TypeReq INT NOT NULL, -- Вид обращения*
+  SNF VARCHAR(80) NOT NULL, -- ФИО заявителя*
+  Phone TEXT, -- Телефон заявителя. Может быть несколько записей
+  Email TEXT, -- Электронная почта заявителя. Может быть несколько записей
+  Region INT NOT NULL, -- Регион обращения*. Код по справочнику ОКАТО
+  TextReq TEXT NOT NULL, -- Текст обращения*
+  FileReq TEXT, -- Файлы обращения (сканы, текстовые документы (word, txt, html), аудиоматериалы)
+  FOREIGN KEY (Type_) REFERENCES Types(ID),
+  FOREIGN KEY (Employee) REFERENCES Users(ID),
+  FOREIGN KEY (TypeReq) REFERENCES TypesReq(ID),
+  FOREIGN KEY (Region) REFERENCES Regions(ID)
 );
 
 CREATE TABLE RequestsPhys
 (
   NumberReq INT PRIMARY KEY AUTO_INCREMENT, -- Уникальный номер обращения в системе документооборота*
   NumberReg INT NOT NULL, -- Номер регистрации обращения в системе документооборота*
-  TypeReq INT NOT NULL, -- Вид обращения*
-  Surname VARCHAR(20) NOT NULL, -- Фамилия заявителя *
-  Name VARCHAR(20) NOT NULL, -- Имя заявителя *
-  Fathername VARCHAR(20), -- Отчество заявителя
   SocialPol INT NOT NULL, -- Социальное положение*
-  Phone TEXT, -- Телефон заявителя. Может быть несколько записей
   TypeResp INT, -- Вид ответа (по электронной почте или по бумажной почте)
-  Email TEXT, -- Электронная почта заявителя. Может быть несколько записей
   PostIndex VARCHAR(6), -- Почтовый индекс
-  Region INT NOT NULL, -- Регион обращения*. Код по справочнику ОКАТО
   District VARCHAR(40), -- Район
   Point VARCHAR(40), -- Населенный пункт
   StreetHouseFlat VARCHAR(40), -- Улица, дом, квартира
-  TextReq TEXT NOT NULL, -- Текст обращения*
-  FileReq TEXT, -- Файлы обращения (сканы, текстовые документы (word, txt, html), аудиоматериалы)
   FOREIGN KEY (NumberReg) REFERENCES Requests(NumberReg),
-  FOREIGN KEY (TypeReq) REFERENCES TypesReq(ID),
   FOREIGN KEY (TypeResp) REFERENCES TypesResp(ID),
   FOREIGN KEY (SocialPol) REFERENCES SocialPols(ID),
-  FOREIGN KEY (Region) REFERENCES Regions(ID)
 );
 
 CREATE TABLE RequestsYur
 (
   NumberReq INT PRIMARY KEY AUTO_INCREMENT, -- Уникальный номер обращения в системе документооборота*
   NumberReg INT NOT NULL, -- Номер регистрации обращения в системе документооборота*
-  TypeReq INT NOT NULL, -- Вид обращения*
   Category INT NOT NULL, -- Категория бизнеса*
   Name VARCHAR(20) NOT NULL, -- Название организации*
   OGRN VARCHAR(20) NOT NULL, -- ОГРН/ОГРНИП*
   INN VARCHAR(20), -- ИНН
   TypeResp INT, -- Вид ответа (по электронной почте или по бумажной почте)
-  Email TEXT, -- Электронная почта заявителя. Может быть несколько записей
-  Phone TEXT, -- Телефон заявителя. Может быть несколько записей
-  Region INT NOT NULL, -- Регион обращения*. Код по справочнику ОКАТО
   PostIndex VARCHAR(6), -- Почтовый индекс
-  TextReq TEXT NOT NULL, -- Текст обращения*
-  FileReq TEXT, -- Файлы обращения (сканы, текстовые документы (word, txt, html), аудиоматериалы)
   FOREIGN KEY (NumberReg) REFERENCES Requests(NumberReg),
-  FOREIGN KEY (TypeReq) REFERENCES TypesReq(ID),
-  FOREIGN KEY (Category) REFERENCES Categories(ID),
   FOREIGN KEY (TypeResp) REFERENCES TypesResp(ID),
-  FOREIGN KEY (Region) REFERENCES Regions(ID)
+  FOREIGN KEY (Category) REFERENCES Categories(ID),
 );
 
 CREATE TABLE Responses

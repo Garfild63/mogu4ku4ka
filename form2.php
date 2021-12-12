@@ -1,6 +1,7 @@
 <?php
     session_start();
 	function typeOfText($link, $email, $text) {
+		$text = strtolower($text);
 		if (strpos($text, 'некачеств') and strpos($text, 'медицинск') and strpos($text, 'помощь')) {
 			$type = 0;
 		} else if ((strpos($text, 'платн') or strpos($text, 'ненадлежащ') or strpos($text, 'некачеств') or strpos($text, 'нарушен')) and (strpos($text, 'услуг') or strpos($text, 'медосмотр')) and strpos($text, 'медицинск')) {
@@ -43,16 +44,16 @@
         $text = $_POST['text'];
 		$filename = '';
 		if(isset($_FILES) && $_FILES['file']['error'] == 0) { // Проверяем, загрузил ли пользователь файл
-			$filename = 'http://egorka4urin.000webhostapp.com/userfiles/' . $_FILES['file']['name'];
-			$destination_dir = dirname(__FILE__) . '/userfiles/' . $_FILES['file']['name']; // Директория для размещения файла
+			$filename = $_FILES['file']['name'];
+			$destination_dir = dirname(__FILE__) . '/userfiles/' . $filename; // Директория для размещения файла
 			move_uploaded_file($_FILES['file']['tmp_name'], $destination_dir); // Перемещаем файл в желаемую директорию
 			// echo 'File Uploaded to ' . $destination_dir; // Оповещаем пользователя об успешной загрузке файла
 		} else {
 			// echo 'No File Uploaded'; // Оповещаем пользователя о том, что файл не был загружен
 		}
 		$link = mysqli_connect('localhost', 'id18108619_user', '__Sabina83__', 'id18108619_mydb');
-		$result = mysqli_query($link, 'INSERT INTO Requests (DateReg, TypeReq) VALUES (NOW(), "' . typeOfText($link, $email, $text) . '")');
-        $result = mysqli_query($link, 'INSERT INTO RequestsYur (NumberReg, TypeReq, Category, Name, OGRN, INN, TypeResp, Email, Phone, Region, PostIndex, TextReq, FileReq) VALUES ("' . mysqli_insert_id($link) . '", "' . $theme . '", "' . $radio1 . '", "' . $name . '", "' . $ogrn . '", "' . $inn . '", "' . $radio2 . '", "' . $email . '", "' . $tel . '", "' . $region . '", "' . $mail . '", "' . $text . '", "' . $filename . '")');
+		$result = mysqli_query($link, 'INSERT INTO Requests (DateReg, Type_, Employee, Decided, TypeReq, SNF, Phone, Email, Region, TextReq, FileReq) VALUES (NOW(), "' . typeOfText($link, $email, $text) . '", 1, FALSE, "' . $theme . '", "' . $fio . '", "' . $tel . '", "' . $email . '", "' . $region . '", "' . $text . '", "' . $filename . '")');
+        $result = mysqli_query($link, 'INSERT INTO RequestsYur (NumberReg, Category, Name, OGRN, INN, TypeResp, PostIndex) VALUES ("' . mysqli_insert_id($link) . '", "' . $radio1 . '", "' . $name . '", "' . $ogrn . '", "' . $inn . '", "' . $radio2 . '", "' . $mail . '")');
     }
 ?>
 <!DOCTYPE html>
@@ -69,7 +70,7 @@
             <div>ФЕДЕРАЛЬНАЯ СЛУЖБА ПО НАДЗОРУ<br> В СФЕРЕ ЗДРАВООХРАНЕНИЯ</div>
         </div>
         <div class="header-login">
-            <a href="login.php"><div>Личный<br />кабинет</div><img id="img1" src="photo/Vector 2.png"><img id="img2"src="photo/Vector 1.png"></a>
+            <?php if isset($_SESSION['id']) echo '<a href="appelation.php"><div>' . $_SESSION['login'] . '</div>' else echo '<a href="login.php"><div>Личный<br />кабинет</div>' ?><img id="img1" src="photo/Vector 2.png"><img id="img2"src="photo/Vector 1.png"></a>
         </div>
         
     </header>
@@ -81,7 +82,7 @@
                 <select name="theme" required>
                     <option style="display:none">
                     <?php
-						$link = mysqli_connect('localhost', 'id17910106_egor', '__Sabina83__', 'id17910106_garf');
+						$link = mysqli_connect('localhost', 'id18108619_user', '__Sabina83__', 'id18108619_mydb');
 						$result = mysqli_query($link, 'SELECT * FROM TypesReq');
 						if ($row = mysqli_fetch_all($result)) {
 							foreach ($row as $arr) {
@@ -97,7 +98,7 @@
             <label id="radiobox">
                 Категория бизнеса*<br><br>
                 <?php
-					$link = mysqli_connect('localhost', 'id17910106_egor', '__Sabina83__', 'id17910106_garf');
+					$link = mysqli_connect('localhost', 'id18108619_user', '__Sabina83__', 'id18108619_mydb');
 					$result = mysqli_query($link, 'SELECT * FROM Categories');
 					if ($row = mysqli_fetch_all($result)) {
 						foreach ($row as $arr) {
@@ -133,7 +134,7 @@
             <label id="radiobox">
                 Способ получения ответа<br><br>
                 <?php
-					$link = mysqli_connect('localhost', 'id17910106_egor', '__Sabina83__', 'id17910106_garf');
+					$link = mysqli_connect('localhost', 'id18108619_user', '__Sabina83__', 'id18108619_mydb');
 					$result = mysqli_query($link, 'SELECT * FROM TypesResp');
 					if ($row = mysqli_fetch_all($result)) {
 						foreach ($row as $arr) {
@@ -151,6 +152,13 @@
             </label>
         </div>
         <hr>
+		<div class="formdiv">
+            <label>
+                ФИО<br><br>
+                <input type="fio" name="fio" value="<?php if (isset($_GET['last_name'])) echo $_GET['last_name'] . ' '; if (isset($_GET['first_name'])) echo $_GET['first_name'] . ' '; if (isset($_GET['patronim'])) echo $_GET['patronim'] . ' '; ?>"><br>
+            </label>
+        </div>
+        <hr>
         <div class="formdiv">
             <label>
                 Телефон<br><br>
@@ -165,7 +173,7 @@
                 <select name="region" required>
                     <option style="display:none">
                     <?php
-						$link = mysqli_connect('localhost', 'id17910106_egor', '__Sabina83__', 'id17910106_garf');
+						$link = mysqli_connect('localhost', 'id18108619_user', '__Sabina83__', 'id18108619_mydb');
 						$result = mysqli_query($link, 'SELECT * FROM Regions');
 						if ($row = mysqli_fetch_all($result)) {
 							foreach ($row as $arr) {

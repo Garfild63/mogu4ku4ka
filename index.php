@@ -18,22 +18,40 @@
             <div>ФЕДЕРАЛЬНАЯ СЛУЖБА ПО НАДЗОРУ<br> В СФЕРЕ ЗДРАВООХРАНЕНИЯ</div>
         </div>
         <div class="header-login">
-            <a href="login.php"><div>Личный<br />кабинет</div><img id="img1" src="photo/Vector 2.png"><img id="img2" src="photo/Vector 1.png"></a>
+            <?php if isset($_SESSION['id']) echo '<a href="appelation.php"><div>' . $_SESSION['login'] . '</div>' else echo '<a href="login.php"><div>Личный<br />кабинет</div>' ?><img id="img1" src="photo/Vector 2.png"><img id="img2" src="photo/Vector 1.png"></a>
         </div>
 
     </header>
-	<form id="to" action="#" method="POST" enctype="multipart/form-data">
-        <div class="obr">
-            <h2>Федеральная служба<br> по надзору в сфере<br> здравоохранения</h2>
-            <h3>
-                Не устраивает работа наших органов? <br>
+	<article>
+        <div class="article-div">
+            <img id="img3" src="photo/cropped-logo-removebg-preview 1.png" />
+            <h1>Федеральная служба<br> по надзору в сфере<br> здравоохранения</h1>
+            <div style="margin-left:17px; margin-bottom:91px">
+                Не устраивает работа наших органов?<br />
                 Оставьте своё обращение!
-            </h3>
+            </div>
+            <a id="goto" href="#to">Подать обращение</a>
+            </div>
+            
+	</article>
+    <article>
+        <div class="article-div">
+            <img id="img3" src="photo/Rectangle 89.png" / style="width:290px; height:270px;margin-top:80px;">
+            <h1>Счетчик обращений<br> граждан и организаций</h1>
+            <div style=" margin-bottom:50px">
+                ПОСТУПИЛО <span class="counter-RECEIVED"></span><br />
+            </div>
+            <div style=" margin-bottom:50px">
+                НА РАССМОТРЕНИИ <span class="counter-IN-CONSIDERATION"></span><br />
+            </div>
+            <div>
+                РЕШЕНО <span class="counter-RESOLVED"></span><br />
+            </div>
         </div>
-         <img class="obr_foto" src="photo/cropped-logo-removebg-preview 1.png"/>
-         <a id="goto" href="#to" style="">Подать объявление</a>
-    </form>
-    <form id="to" action="#" method="POST" enctype="multipart/form-data">
+
+    </article>
+	<h1 id="to">Оставьте свои контакты<br /> для обращения</h1>
+    <form  action="#" method="POST" enctype="multipart/form-data">
 
         <div class="formdiv">
             <label>

@@ -14,7 +14,7 @@
 			}
 		}
 		if (empty($login) or empty($password)) {
-			exit("Вы ввели не всю информацию, вернитесь назад и заполните все поля!");
+			exit('Вы ввели не всю информацию, вернитесь назад и заполните все поля!<meta http-equiv="refresh" content="1;URL=login.php"/>');
 		}
 		$login = stripslashes($login);
 		$login = htmlspecialchars($login);
@@ -26,14 +26,14 @@
 		$result = mysqli_query($link, "SELECT * FROM Users WHERE Login = '$login'");
 		$myrow = mysqli_fetch_array($result);
 		if (empty($myrow['Password'])) {
-			exit("Извините, введённый вами login или пароль неверный.");
+			exit('Извините, введённый вами login или пароль неверный.<meta http-equiv="refresh" content="1;URL=login.php"/>');
 		} else {
 			if ($myrow['Password'] == $password) {
 				$_SESSION['login'] = $myrow['Login'];
 				$_SESSION['id'] = $myrow['ID'];
 				// echo "Вы успешно вошли на сайт! <a href='index.php'>Главная страница</a>";
 			} else {
-				exit ("Извините, введённый вами login или пароль неверный.");
+				exit('Извините, введённый вами login или пароль неверный.<meta http-equiv="refresh" content="1;URL=login.php"/>');
 			}
 		}
 	}

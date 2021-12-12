@@ -1,6 +1,6 @@
 ﻿body {
     margin: 0 auto;
-    font-family: sansa;
+    font-family:sansa;
 }
 
 header {
@@ -44,32 +44,15 @@ h1 {
 }
 
 h2 {
-    text-align: left;
-    padding-left: 5%;
-    margin-left: 12.6%;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 53px;
-    line-height: 59px;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 31px;
     color: rgba(0, 0, 0, 0.71);
-    margin-bottom: 67px;
 }
 
-h3 {
-    text-align: left;
-    padding-left: 6%;
-    margin-left: 12.6%;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 30px;
-    color: rgba(0, 0, 0, 0.71);
-    margin-bottom: 67px;
-}
-
-a {
-    color: black;
-    text-decoration: none;
+a{
+    color:black;
+    text-decoration:none;
 }
 
 form {
@@ -83,14 +66,58 @@ form {
     font-weight: 300;
     font-size: 25px;
     line-height: 28px;
+    min-height: 130px;
 }
+
+    form:nth-child(2n) {
+        background: rgba(231, 190, 86, 0.08);
+    }
+
+        form:nth-child(2n) #submit {
+            background: #1A4F9E;
+        } 
+
+        article {
+            margin: auto 7% 90px;
+            background-color: #F1F4F9;
+            width: 80%;
+            display: block;
+            border-radius: 60px;
+            padding-top: 10px;
+            padding-bottom: 67px;
+            font-family: sansa;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 25px;
+            line-height: 28px;
+            color: #000000;
+        }
+
+    article h1 {
+        margin-bottom: 46px;
+        margin-left: 0;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 53px;
+        line-height: 59px;
+    }
+
+.article-div {
+    margin: auto;
+    width: 89%;
+}
+
+#img3 {
+    float:right;
+}
+
 
 form * {
     margin: 0 0 30px 0;
 }
 
 .formdiv {
-    margin: auto;
+    margin:auto;
     width: 77%;
 }
 
@@ -110,6 +137,7 @@ select {
 }
 
 option {
+    
     font-family: sansa;
     font-style: normal;
     font-weight: 300;
@@ -133,7 +161,7 @@ input {
     float: left;
 }
 
-#divcheck div {
+    #divcheck div{
     width: 90%;
     margin-left: 50px;
 }
@@ -144,25 +172,25 @@ input {
 }
 
 
-#radiobox input ~ input {
-	margin-left: 40px;
-}
+    #radiobox input ~ input {
+        margin-left: 40px;
+    }
 
-#br {
+   #br {
     display: none;
 } 
 
-#mail {
-	width: 49%;
-}
+   #mail{
+       width:49%;
+   }
 
 #file {
-    font-family: sansa;
+    font-family:sansa;
     width: 100%;
     height: auto;
     background-color: #FFFFFF;
-    border-style: solid;
-    border-width: 1px;
+    border-style:solid;
+    border-width:1px;
 }
 
 textarea {
@@ -177,11 +205,11 @@ textarea {
     line-height: 28px;
 }
 
-#submit, #goto {
+#submit {
     width: auto;
     height: auto;
     margin-top: 37px;
-    margin-bottom: 73px;
+    margin-bottom:73px;
     padding: 14px 35px;
     background-color: #DC1616;
     border-radius: 12px;
@@ -197,34 +225,54 @@ textarea {
 }
 
 #goto {
-	margin-left: 35%;
+    width: auto;
+    height: auto;
+    padding: 14px 35px;
+    background-color: #DC1616;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-family: sansa;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 40px;
+    text-align: center;
+    transition: 1000ms;
 }
 
 #cabinet_login {
-	width: auto;
-	height: auto;
-	margin-top: 37px;
-	margin-left: 8%;
-	padding: 14px 35px;
-	background-color: #B4B3B3;
-	border-radius: 12px;
-	border: none;
-	color: white;
-	font-family: sansa;
-	font-style: normal;
-	font-weight: 300;
-	font-size: 36px;
-	line-height: 40px;
-	text-align: center;
-	transition: 1000ms;
+    width: auto;
+    height: auto;
+    margin-top: 37px;
+    margin-left: 8%;
+    padding: 14px 35px;
+    background-color: #B4B3B3;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-family: sansa;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 40px;
+    text-align: center;
+    transition: 1000ms;
 }
 
-#cabinet_login:hover {
-	background-color: #817066;
-	transition: 1000ms;
+.appelation-h {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 54px;
 }
 
-#cabinet_register {
+    #cabinet_login:hover {
+        background-color: #817066;
+        transition: 1000ms;
+    }
+
+        #cabinet_register {
     width: auto;
     height: auto;
     margin-top: 37px;
@@ -244,14 +292,14 @@ textarea {
     transition: 1000ms;
 }
 
-#cabinet_register:hover {
-	background-color: #ff6161;
-	transition: 1000ms;
-}
+    #cabinet_register:hover {
+        background-color: #ff6161;
+        transition: 1000ms;
+    }
 
-#submit:hover {
-	background-color: #ff6161;
-	transition: 1000ms;
+#submit:hover, #goto:hover {
+    background-color: #ff6161;
+    transition: 1000ms;
 }
 
 footer div {
@@ -263,65 +311,61 @@ footer div {
     width: 28%;
 }
 
-.footer-logo img {
-    position: absolute;
-    top: 55px;
-    left: 55px;
+.footer-logo img{
+    position:absolute;
+    top:55px;
+    left:55px;
 }
 
 .footer-nav {
     background-color: #B4B3B3;
-    width: 28%;
+    width:28%;
 }
 
-.footer-nav ul {
-	margin-top: 32px;
-}
+    .footer-nav ul{
+        margin-top:32px;
+    }
 
-.footer-nav ul li {
-	margin-top: 12px;
-	list-style-type: none;
-}
+    .footer-nav ul li {
+        margin-top: 12px;
+        list-style-type: none;
+    }
 
-.footer-conect {
-	background-color: #DADADA;
-	padding-left: 36px;
-	width: 44%;
-}
+    .footer-conect {
+        background-color: #DADADA;
+        padding-left:36px;
+        width:44%;
+    }
 
-.footer-conect div {
+.footer-conect div{
     font-size: 13px;
     line-height: 15px;
 }
 
-.header-logo {
-	position: relative;
-	height: 91px;
-	width: 478px;
-	margin-left: 7%;
-	top: 24px;
-	font-style: normal;
-	font-weight: 300;
-	font-size: 20px;
-	line-height: 25px;
-	float: left;
+        .header-logo {
+            position: relative;
+            height: 91px;
+            width: 478px;
+            margin-left: 7%;
+            top: 24px;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 25px;
+            float: left;
+        }
+
+.header-logo img{
+    position:absolute;
+    top:0;
+    left:0;
 }
 
-.index-logo {
-    float: right;
-}
-
-.header-logo img {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.header-logo div {
-	position: absolute;
-	top: 26px;
-	left: 89px;
-}
+    .header-logo div{
+        position:absolute;
+        top:26px;
+        left: 89px;
+    }
 
 .header-login {
     position: relative;
@@ -333,26 +377,17 @@ footer div {
     line-height: 22px;
     text-align: center;
 }
+    .header-login a div{
+        position:absolute;
+        top:0;
+        left:0;
+    }
 
-.header-login a div {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.obr_foto {
-    position: relative;
-    bottom: 225pt;
-    width: 20%;
-    padding-right: 4.5%;
-    float: right;
-}
-
-#img1 {
-    position: absolute;
-    top: 14px;
-    left: 75px;
-}
+    #img1{
+        position:absolute;
+        top:14px;
+        left:75px;
+    }
 
 #img2 {
     position: absolute;
@@ -360,36 +395,36 @@ footer div {
     left: 95px;
 }
 
-@media screen and (max-width: 800px) {
-	header {
-		margin-bottom: 34px;
-	}
-	
+    @media screen and (max-width: 800px) {
+        header{
+        margin-bottom: 34px;
+    }
     h1 {
         font-size: 25px;
         line-height: 28px;
-        margin-bottom: 34px;
+        margin-bottom:34px;
     }
 
     footer {
         flex-direction: column;
+
     }
 
-	.footer-logo {
-		width: 100%;
-	}
+        .footer-logo {
+            width: 100%;
+        }
 
-	.footer-nav {
-		width: 100%;
-	}
+        .footer-nav {
+            width: 100%;
+        }
 
-	.footer-conect {
-		width:100%;
-	}
+        .footer-conect{
+            width:100%;
+        }
 
-	#br {
-		display: block;
-	}
+        #br {
+            display: block;
+        }
 
     #radiobox input ~ input {
         margin-left: 0px;

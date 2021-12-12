@@ -14,7 +14,7 @@
 			}
 		}
 		if (empty($login) or empty($password)) {
-			exit("Вы ввели не всю информацию, вернитесь назад и заполните все поля!");
+			exit('Вы ввели не всю информацию, вернитесь назад и заполните все поля!<meta http-equiv="refresh" content="1;URL=registration.php"/>');
 		}
 		$login = stripslashes($login);
 		$login = htmlspecialchars($login);
@@ -26,7 +26,7 @@
 		$result = mysqli_query($link, "SELECT ID FROM Users WHERE Login = '$login'");
 		$myrow = mysqli_fetch_array($result);
 		if (!empty($myrow['ID'])) {
-			exit("Извините, введённый вами логин уже зарегистрирован. Введите другой логин.");
+			exit('Извините, введённый вами логин уже зарегистрирован. Введите другой логин.<meta http-equiv="refresh" content="1;URL=registration.php"/>');
 		}
 		if ($password == $_POST['password_repeat']) {
 			$name = $_POST['name'];
@@ -39,10 +39,10 @@
 				$_SESSION['id'] = $myrow['ID'];
 				// echo "Вы успешно зарегистрированы! Теперь вы можете зайти на сайт. <a href='index.php'>Главная страница</a>";
 			} else {
-				exit("Ошибка! Вы не зарегистрированы.");
+				exit('Ошибка! Вы не зарегистрированы.<meta http-equiv="refresh" content="1;URL=registration.php"/>');
 			}
 		} else {
-			exit("Ошибка! Пароли не совпадают.");
+			exit('Ошибка! Пароли не совпадают.<meta http-equiv="refresh" content="1;URL=registration.php"/>');
 		}
 	}
 ?>
