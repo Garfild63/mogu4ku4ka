@@ -1,12 +1,6 @@
 ﻿<?php
 	session_start();
-	if (isset($_SESSION['login'])) {
-		if ($_SESSION['login'] == 'admin') {
-			
-		} else {
-			
-		}
-	} else {
+	if (!isset($_SESSION['login'])) {
 		exit('Ошибка! Вы не вошли на сайт<meta http-equiv="refresh" content="1;URL=login.php"/>');
 	}
 ?>
@@ -30,14 +24,16 @@
         <div class="formdiv">
             <details class="details" clouse>
 				<?php
+					if ($_SESSION['login'] == 'admin') {
+						
+					} else {
 						$link = mysqli_connect('localhost', 'id18108619_user', '__Sabina83__', 'id18108619_mydb');
 						$result = mysqli_query($link, 'SELECT * FROM Requests WHERE Employee = "' . $_SESSION['id'] . '" AND NOT Decided');
-						if ($row = mysqli_fetch_all($result)) {
-							foreach ($row as $arr) {
-								echo '<option value="' . $arr[0] . '">' . $arr[1] . '</option>';
-							}
+						if ($row = mysqli_fetch_array($result)) {
+							echo '';
 						}
-					?>
+					}
+				?>
                 <summary><h2 class="appelation-h">Обращение <span id="num-appelation"></span></h2></summary>
 				
 				<label>

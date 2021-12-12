@@ -155,7 +155,7 @@
 		<div class="formdiv">
             <label>
                 ФИО<br><br>
-                <input type="fio" name="fio" value="<?php if (isset($_GET['last_name'])) echo $_GET['last_name'] . ' '; if (isset($_GET['first_name'])) echo $_GET['first_name'] . ' '; if (isset($_GET['patronim'])) echo $_GET['patronim'] . ' '; ?>"><br>
+                <input type="fio" name="fio" value="<?php if (isset($_GET['last_name'])) echo $_GET['last_name'] . ' '; if (isset($_GET['first_name'])) echo $_GET['first_name'] . ' '; if (isset($_GET['patronim'])) echo $_GET['patronim']; ?>"><br>
             </label>
         </div>
         <hr>
